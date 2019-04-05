@@ -1,0 +1,43 @@
+create tablespace third_quiz datafile 'quiz3_01' size 15M;
+
+--select * from dba_tablespaces;
+
+--select * from dba_profiles order by profile;
+create profile consultant limit
+sessions_per_user  2
+cpu_per_session unlimited
+password_reuse_max 3
+connect_time  3;
+
+create user user1
+identified by user1
+default tablespace third_quiz;
+
+alter user user1
+identified BY user1
+default tablespace third_quiz
+password expire
+account unlock
+profile consultant;
+
+GRANT CREATE SESSION TO user1;
+GRANT CREATE TABLE TO user1;
+GRANT CONNECT TO user1;
+
+create user user2
+identified by user2
+default tablespace third_quiz;
+
+create user user2
+identified by user2
+default tablespace third_quiz;
+
+alter user user2
+identified BY user2
+default tablespace third_quiz
+password expire
+account unlock
+profile consultant;
+
+GRANT CREATE SESSION TO user2;
+GRANT CONNECT TO user2;
