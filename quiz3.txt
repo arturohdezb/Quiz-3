@@ -41,3 +41,13 @@ profile consultant;
 
 GRANT CREATE SESSION TO user2;
 GRANT CONNECT TO user2;
+
+create table attacks (
+	id INT,
+	url VARCHAR(2048),
+	ip_address VARCHAR(20),
+	number_of_attacks INT,
+	time_of_last_attack TIMESTAMP
+);
+
+GRANT SELECT ON attacks TO user2;
